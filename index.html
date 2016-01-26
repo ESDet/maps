@@ -48,6 +48,24 @@
       zoom: 11,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     });
+
+    // Initialize Census Data Layer
+    firstLayer = new google.maps.FusionTablesLayer({
+      map: map,
+      heatmap: { enabled: false },
+      query: {
+        select: "col196",
+        from: "1uc5dS9ufdXLhO2Zn7G-Zx3U8o31eAbkbU_HdIATp",
+        where: ""
+      },
+      options: {
+        styleId: 7,
+        templateId: 8
+      }
+    });
+
+    // Initialize School Heatmap Layer
+ 
     var query = 'select col1, col0 from 19bLkyPdy37ZLHcnuHQBC_zOCDRNevBq0XJQknLGu limit 1000';
     var request = gapi.client.fusiontables.query.sqlGet({ sql: query });
     request.execute(function(response) {
